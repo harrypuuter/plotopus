@@ -1,6 +1,7 @@
 import pandas
 import numpy as np
 
+
 class Plot(object):
     def __init__(self, name, variablename, plotlines=[]):
         self.name = name
@@ -36,10 +37,10 @@ class Plotline(object):
     def __init__(self, sample, variable):
         self.sample = sample
         self.name = sample.name + variable.name
-        self.color = 'black'
-        self.plotstyle = 'line'
+        self.color = "black"
+        self.plotstyle = "line"
         self.linewidth = 1
-        self.legendstyle = 'line'
+        self.legendstyle = "line"
         self.data = None
         self.variable = variable
         self.histogram_array = None
@@ -47,15 +48,18 @@ class Plotline(object):
     def define_style(self, styledict):
         for setting in styledict:
             try:
-                result = getattr(self,
-                                 "set_{}".format(setting))(styledict[setting])
+                result = getattr(self, "set_{}".format(setting))(styledict[setting])
             except AttributeError:
                 available = [
-                    func for func in dir(self) if callable(getattr(self, func))
-                    and not func.startswith("__")
+                    func
+                    for func in dir(self)
+                    if callable(getattr(self, func)) and not func.startswith("__")
                 ]
-                print("This option is not available, available options are {}".
-                      format(available))
+                print(
+                    "This option is not available, available options are {}".format(
+                        available
+                    )
+                )
 
     def set_color(self, color):
         self.color = color

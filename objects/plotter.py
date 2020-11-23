@@ -32,8 +32,8 @@ class Plotter(object):
 
     def save_plot(self, plot):
         self.plotobject.tight_layout()
-        self.plotobject.savefig('{}/{}.pdf'.format(self.outputpath, plot.name))
-        self.plotobject.savefig('{}/{}.png'.format(self.outputpath, plot.name))
+        self.plotobject.savefig("{}/{}.pdf".format(self.outputpath, plot.name))
+        self.plotobject.savefig("{}/{}.png".format(self.outputpath, plot.name))
 
 
 class HistogramPlotter(Plotter):
@@ -48,11 +48,9 @@ class HistogramPlotter(Plotter):
     def draw_plot(self, plot):
         dataset = [plotline.data.to_numpy() for plotline in plot.plotlines]
         colors = [plotline.color() for plotline in plot.plotlines]
-        self.plotobject.hist(dataset,
-                             plot.binning,
-                             histtype='bar',
-                             stacked=self.stacked,
-                             color=colors)
+        self.plotobject.hist(
+            dataset, plot.binning, histtype="bar", stacked=self.stacked, color=colors
+        )
 
     def add_legend(self, plot):
         labeldict = {}

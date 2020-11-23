@@ -1,5 +1,6 @@
 import logging
 import yaml
+
 logger = logging.getLogger(__name__)
 from objects.variable import Variable
 from rich import print
@@ -12,8 +13,9 @@ class Varset(object):
         self.setname = setname
         self.samples = []
         self.variables = []
-        self.binning_dict = yaml.load(open("data/binning.yaml"),
-                                      Loader=yaml.FullLoader)["variable"]
+        self.binning_dict = yaml.load(
+            open("data/binning.yaml"), Loader=yaml.FullLoader
+        )["variable"]
 
     def add_variable(self, label, variablestring, binning=[]):
         if len(binning) == 0:
@@ -39,8 +41,7 @@ class Varset(object):
         if len(temp) == 1:
             return temp[0]
         else:
-            print("Variable {} not found in Varset {}".format(
-                name, self.setname))
+            print("Variable {} not found in Varset {}".format(name, self.setname))
 
     def __repr__(self):
         table = Table(title=self.setname)

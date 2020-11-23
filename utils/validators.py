@@ -1,6 +1,7 @@
 import logging
 import os.path
 from rich.traceback import install
+
 install()
 logger = logging.getLogger(__name__)
 

@@ -5,7 +5,9 @@ from objects.varset import Varset
 from rich import print
 from rich.console import Console
 from rich.table import Table
+
 logger = logging.getLogger(__name__)
+
 
 class Sample(object):
     def __init__(self, filename, samplename):
@@ -27,6 +29,7 @@ class Sample(object):
     def add_selection(self, selection_string):
         self.selection = selection_string
 
+
 class RootNtuple(Sample):
     """
         Container for a Root ntuple file, requires
@@ -36,6 +39,7 @@ class RootNtuple(Sample):
         tree - name of the roottree
         friends - list of friend trees to the original sample to be considered
     """
+
     def __init__(self, filename, samplename, folder, treename, friends=[]):
         super().__init__(filename, samplename)
         self.rootfolder = folder
@@ -78,8 +82,7 @@ class RootNtuple(Sample):
         #     return True
 
     def open_and_get_keys(self):
-        pathhash = self.histhash.format(folder=self.rootfolder,
-                                        tree=self.treename)
+        pathhash = self.histhash.format(folder=self.rootfolder, tree=self.treename)
         check_file_exists(self.filename)
         self.tree = uproot.open(self.filename)[pathhash]
         return self.tree.keys()

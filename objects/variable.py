@@ -1,4 +1,5 @@
 import logging
+
 logger = logging.getLogger(__name__)
 from rich.console import Console
 from rich.table import Table
@@ -30,6 +31,7 @@ class Variable(object):
         console = Console()
         console.print(self.table)
         return ""
+
     #     printout = """ --- Configuration of Variable {var} --- \n| --> name:    {var}\n| --> varstring:      {varstring}\n| --> binning:    {binning}\n| --> available:    {avail}\n---------------------------------------------
     #    """.format(var=self.name, varstring=self.varstring, binning=self.binning, avail=self.available)
     #     return printout
@@ -39,4 +41,3 @@ class Variable(object):
 
     def set_unavailable(self):
         self.available = False
-
