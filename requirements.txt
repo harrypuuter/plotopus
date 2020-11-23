@@ -1,0 +1,7 @@
+# StyleGuied Enforcement
+numpy
+pandas
+matplotlib
+rich
+pyyaml
+uproot
